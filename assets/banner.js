@@ -183,3 +183,24 @@ document.getElementById("imageUploaderBanner").addEventListener('click', functio
     e.preventDefault()
     document.getElementById("adBackgroundImage").click()
 })
+
+
+
+document.addEventListener("bannerForm.newImageCreated", function(event) {
+    /*
+        banner generated
+        -------------------------
+        event.detail = {
+            fileName: fileName,
+            blobImageUrl: blobImage
+        }
+    */
+    let urlAsList = event.detail.blobImageUrl.toString().split("/")
+    let fileName = urlAsList[urlAsList.length - 1]
+    const a = document.createElement("a")
+    a.download = fileName + ".png"
+    a.href = event.detail.blobImageUrl
+    document.body.append(a)
+    a.click()
+    a.remove()
+})

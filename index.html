@@ -4,14 +4,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Banner Generator</title>
+
+    <!--seo stuffs-->
+    <meta name="description" content="Very simple canvas to image generator written in vanilla javascript. No depencencies!">
+    <meta name="keywords" content="rk4bir, kabir, raihan, portfolio, personal website, software engineer, software developer, web development">
+    <meta name="author" content="Raihan Kabir">
+    <meta name="robots" content="”index,follow”">
+    <link rel="canonical" href="https://rk4bir.github.io">
+    <meta property="og:title" content="Raihan Kabir ← Simple Banner Image Generator">
+    <meta property="og:description" content="Very simple canvas to image generator written in vanilla javascript. No depencencies!">
+    <meta property="og:url" content="https://rk4bir.github.io">
+    <meta property="og:image" content="./assets/icon.svg">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:alt" content="rk4b1r (Raihan Kabir)">
+    <meta name="twitter:dnt" content="on">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@rk4bir">
+    <meta name="twitter:creator" content="@rk4bir">
+    <meta name="twitter:title" content="Raihan Kabir ← Simple Banner Image Generator">
+    <meta name="twitter:url" content="https://rk4bir.github.io">
+    <meta name="twitter:description" content="Very simple canvas to image generator written in vanilla javascript. No depencencies!">
+    <meta name="twitter:image" content="./assets/icon.svg">
+    <meta name="twitter:image:alt" content="rk4bir">
+    
+    
+    <link rel="icon" href="./assets/icon.svg">
+    <title>Raihan Kabir ← Simple Banner Image Generator</title>
     
     <!--optional: bootstrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 
     <!--required: banner-->
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./assets/style.css">
     <style>
         .form-group {
             margin-bottom: 20px;
@@ -173,26 +198,6 @@
             </select>
         </div>
     </div>
-    <script src="./banner.js"></script>
-    <script>
-        document.addEventListener("bannerForm.newImageCreated", function(event) {
-            /*
-            banner generated
-            -------------------------
-            event.detail = {
-                fileName: fileName,
-                blobImageUrl: blobImage
-            }
-            */
-            let urlAsList = event.detail.blobImageUrl.toString().split("/")
-            let fileName = urlAsList[urlAsList.length - 1]
-            const a = document.createElement("a")
-            a.download = fileName + ".png"
-            a.href = event.detail.blobImageUrl
-            document.body.append(a)
-            a.click()
-            a.remove()
-        })
-    </script>
+    <script src="./assets/banner.js"></script>
 </body>
 </html>
