@@ -1,0 +1,55 @@
+@font-face {
+    font-family: DungGeunMo;
+    src: local(DungGeunMo),
+        url(https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff)
+            format("woff");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+.DungGeunMo { font-family: "DungGeunMo" !important; }
+@font-face {
+    font-family: BMJUA;
+    src: local(BMJUA),
+        url(https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff)
+            format("woff");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+.BMJUA { font-family: "BMJUA" !important; }
+@font-face {
+    font-family: ghanachoco;
+    src: local(ghanachoco),
+        url(https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ghanachoco.woff)
+            format("woff");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+.ghanachoco { font-family: "ghanachoco" !important; }
+@font-face {
+    font-family: "Cafe24Ssurround";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff")
+        format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+.Cafe24Ssurround { font-family: "Cafe24Ssurround" !important; }
+@font-face {
+    font-family: "EarlyFontDiary";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_220508@1.0/EarlyFontDiary.woff2")
+        format("woff2");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+.EarlyFontDiary { font-family: "EarlyFontDiary" !important; }
+
+
+#billboardBannerCanvas {
+    width: 100%;
+    height: 60vh;
+    margin-bottom: 30px;
+}
