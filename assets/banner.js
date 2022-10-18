@@ -31,9 +31,38 @@
         editor.titleFontSize.value = 64
         editor.descFontSize.value = 32
         editor.websiteFontSize.value = 24
+        editor.fontFamily.value = "BMJUA"
+    }
+
+    function getSubtitleLines() {
+        const subtitle = editor.desc.value
+        const width = editor.width.value
+        var availableArea = width - (width / 12)
+        var words = subtitle.split(" ")
+        const fs = editor.descFontSize.value
+        var textWidth = 0
+        var line = ""
+        var lines = []
+        for(let i=0; i<words.length; i++) {
+            word = words[i]
+            textWidth += word.length * fs
+            if(textWidth < availableArea) {
+                line += " " + word
+            } else {
+                lines.push(line)
+                textWidth = word.length * fs
+                line = word
+            }
+
+            if(i === (words.length-1) && lines.indexOf(line) === -1) {
+                lines.push(line)
+            }
+        }
+        return lines.map(item => item.trim())
     }
 
     function updateCanvas() {
+        console.log(editor.width.value + 'x' + editor.height.value)
         let ctx = canvas.getContext("2d")
         const width = editor.width.value;
         const height = editor.height.value;
@@ -76,27 +105,30 @@
         // title
         let lines = editor.title.value.split("\n");
         let lineHeight = editor.titleFontSize.value * 1.5;
-        let firstLineCoord = (height / 2 - 64) - (0.5 * lines.length - 0.5) * lineHeight;
+        let firstLineCoord = (height / 2 - height / 4) - (0.5 * lines.length - 0.5) * lineHeight;
         ctx.font = `${editor.titleFontSize.value}px ${editor.fontFamily.value}`;
-
         lines.forEach((line, index) => {
             ctx.fillText(line, width / 2, firstLineCoord + index * lineHeight);
         });
 
         // description
         ctx.font = `${editor.descFontSize.value}px ${editor.fontFamily.value}`;
-        ctx.fillText(
-            editor.desc.value,
-            width / 2,
-            firstLineCoord + (lines.length - 1) * lineHeight + lineHeight
-        );
+        let descLines = getSubtitleLines()
+        let descPaddingTop = firstLineCoord + lineHeight
+        descLines.forEach((line, index) => {
+            ctx.fillText(
+                line,
+                width / 2,
+                descPaddingTop + index * 1.5 * editor.descFontSize.value + 25
+            );
+        });
 
         // Tag
         ctx.font = `${editor.websiteFontSize.value}px ${editor.fontFamily.value}`;
         ctx.fillText(
             editor.website.value, 
             width / 2, 
-            height - 64
+            height - height / 4
         );
     }
 
@@ -131,6 +163,19 @@
         } else {
             editor.backgroundImage = null
         }
+    })
+    editor.height.addEventListener("keyup", function(e) {
+        updateCanvas()
+    })
+    editor.width.addEventListener("keyup", function(e) {
+        updateCanvas()
+    })
+
+    editor.backgroundColor.addEventListener("input", function() {
+        updateCanvas()
+    })
+    editor.fontColor.addEventListener("input", function() {
+        updateCanvas()
     })
 
     document.getElementById("downloadAsImageButton").addEventListener("click", async function(e) {
@@ -177,6 +222,7 @@ banarGeneratorForm.addEventListener('change', function(e) {
 banarGeneratorForm.addEventListener('click', function() {
     document.dispatchEvent(new CustomEvent('bannerForm.editorChanged'));
 })
+
 
 // open background image input
 document.getElementById("imageUploaderBanner").addEventListener('click', function(e) {

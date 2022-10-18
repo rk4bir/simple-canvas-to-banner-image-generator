@@ -44,15 +44,17 @@
         label { font-weight: 600; margin-bottom: 6px; }
     </style>
 </head>
-<body class="container">
-    <!--preview-->
-    <canvas id="billboardBannerCanvas"></canvas>
-    <div id="banarGeneratorForm">
-        <!--height and width-->
+<body class="container mt-3 bg-light">
+    <!--preview & download-->
+    <div id="previewAndDownloadSection">
+        <!--preview-->
+        <canvas id="billboardBannerCanvas"></canvas>
+
+        <!--height, width, download-->
         <img style="display: none" id="placeholderBannerGeneratorImage">
-        <div style="display: flex;">
-            <div class="form-group" style="width: 32%;">
-                <label for="adWidth">Width</label>
+        <div id="imageSizeAndDownloadContainer">
+            <div class="form-group">
+                <label for="adWidth">Image width</label>
                 <input 
                     type="number" 
                     class="form-control" 
@@ -60,9 +62,8 @@
                     min="400"
                 />
             </div>
-            <div style="width: 2%;"></div>
-            <div class="form-group" style="width: 32%;">
-                <label for="adHeight">Height</label>
+            <div class="form-group">
+                <label for="adHeight">Image height</label>
                 <input 
                     type="number" 
                     class="form-control"
@@ -70,45 +71,7 @@
                     id="adHeight"
                 />
             </div>
-            <div style="width: 2%;"></div>
-            <div id="downloadContainer" style="width: 32%" class="align-self-center">
-                <button id="downloadAsImageButton" class="btn btn-primary w-100 shadow-sm">
-                    <span class="bi bi-download px-2"></span>Download as Image
-                </button>
-            </div>
-        </div><!--height and width-->
-        <div style="display: flex">
-            <!--title-->
-            <div class="form-group" style="width: 49%">
-                <label for="adTitle">Title</label>
-                <input 
-                    type="text" 
-                    class="form-control short_tagline_text"
-                    maxlength="25"
-                    id="adTitle"
-                >
-            </div>
-            <div style="width: 2%;"></div>
-            <div class="form-group" style="width: 49%">
-                <label for="adDesc">Subtitle</label>
-                <input 
-                    class="form-control" 
-                    maxlength="80"
-                    id="adDesc"
-                >
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="adWebsite">Tag</label>
-            <input  
-                type="text"
-                class="form-control" 
-                id="adWebsite"
-            >
-        </div>
-        <!--colors-->
-        <div style="display: flex;">
-            <div class="form-group" style="width: 32%;">
+            <div class="form-group">
                 <label for="adBackgroundColor">Background Color</label>
                 <input 
                     type="color" 
@@ -116,8 +79,7 @@
                     id="adBackgroundColor"
                 />
             </div>
-            <div style="width: 2%;"></div>
-            <div class="form-group" style="width: 32%;">
+            <div class="form-group">
                 <label for="adFontColor">Text Color</label>
                 <input 
                     type="color" 
@@ -125,8 +87,7 @@
                     id="adFontColor"
                 />
             </div>
-            <div style="width: 2%;"></div>
-            <div class="form-group" style="width: 32%">
+            <div class="form-group">
                 <label for="adBackgroundOpacity">Background Opacity</label>
                 <input 
                     type="range" 
@@ -137,7 +98,45 @@
                     min="0"
                 />
             </div>
-        </div><!--colors-->
+            <div id="downloadContainer" class="align-self-center">
+                <button id="downloadAsImageButton" class="btn btn-primary w-100 shadow-sm">
+                    <span class="bi bi-download px-2"></span>Download as Image
+                </button>
+            </div>
+        </div><!--height, width, download-->
+    </div>
+
+    <div id="banarGeneratorForm">
+        <div style="display: flex">
+            <!--title-->
+            <div class="form-group" style="width: 33%">
+                <label for="adTitle">Title</label>
+                <input 
+                    type="text" 
+                    class="form-control short_tagline_text"
+                    maxlength="25"
+                    id="adTitle"
+                >
+            </div>
+            <div style="width: 1%;"></div>
+            <div class="form-group" style="width: 33%">
+                <label for="adDesc">Subtitle</label>
+                <input 
+                    class="form-control" 
+                    maxlength="80"
+                    id="adDesc"
+                >
+            </div>
+            <div style="width: 1%;"></div>
+            <div class="form-group" style="width: 32%">
+                <label for="adWebsite">Tag</label>
+                <input  
+                    type="text"
+                    class="form-control" 
+                    id="adWebsite"
+                >
+            </div>
+        </div>
 
     
         <!--image field-->
