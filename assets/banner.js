@@ -177,6 +177,9 @@
     editor.fontColor.addEventListener("input", function() {
         updateCanvas()
     })
+    editor.backgroundOpacity.addEventListener("change", function() {
+        updateCanvas()
+    })
 
     document.getElementById("downloadAsImageButton").addEventListener("click", async function(e) {
         if (!canvas) {
